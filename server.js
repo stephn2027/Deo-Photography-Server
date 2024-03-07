@@ -7,7 +7,19 @@ const axios = require("axios");
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = ['https://deo-palculan-photography.vercel.app/'];
+
+app.use(cors({
+  origin: function(origin, callback) {
+    // Check if the request origin is allowed
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
 app.use(json());
 
 const {parsed: config } = dotenv.config();
