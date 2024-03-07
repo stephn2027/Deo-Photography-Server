@@ -63,6 +63,6 @@ app.get('/portraits',async (req,res)=>{
    return res.send(response.data);
 });
 
-const PORT = 7000;
+const PORT = process.env.PORT;
 
 app.listen(PORT,console.log(`Server running on ${PORT}`));
