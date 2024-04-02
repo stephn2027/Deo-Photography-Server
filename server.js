@@ -7,29 +7,18 @@ const axios = require("axios");
 
 const app = express();
 
-const allowedOrigins = ['https://deo-palculan-photography.vercel.app/'];
-
-app.use(cors({
-  origin: function(origin, callback) {
-    // Check if the request origin is allowed
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
-
 app.use(json());
 
 const {parsed: config } = dotenv.config();
 
-const BASE_URL_GROUP = `https://api.cloudinary.com/v1_1/dx0mu7i2f/resources/search?expression=folder:group&max_results=10&next_cursor`;
-const BASE_URL_ETC = `https://api.cloudinary.com/v1_1/dx0mu7i2f/resources/search?expression=folder:etc&max_results=10&next_cursor`;
+const CLOUD_NAME = config.CLOUD_NAME;
 
-const BASE_URL_COUPLES = `https://api.cloudinary.com/v1_1/dx0mu7i2f/resources/search?expression=folder:couples&max_results=10&next_cursor`;
+const BASE_URL_GROUP = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/resources/search?expression=folder:group&max_results=10&next_cursor`;
+const BASE_URL_ETC = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/resources/search?expression=folder:etc&max_results=10&next_cursor`;
 
-const BASE_URL_PORTRAITS = `https://api.cloudinary.com/v1_1/dx0mu7i2f/resources/search?expression=folder:portraits&max_results=10&next_cursor`;
+const BASE_URL_COUPLES = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/resources/search?expression=folder:couples&max_results=10&next_cursor`;
+
+const BASE_URL_PORTRAITS = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/resources/search?expression=folder:portraits&max_results=10&next_cursor`;
 const auth = {
     username:config.API_KEY,
     password:config.API_SECRET,
