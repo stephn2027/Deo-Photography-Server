@@ -8,6 +8,7 @@ const axios = require("axios");
 const app = express();
 
 app.use(json());
+app.use(cors());
 
 const {parsed: config } = dotenv.config();
 

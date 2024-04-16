@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
-    "server": "nodemon ./server.js localhost 7000"
+    "server": "nodemon ./server.js localhost 7001"
   },
   "author": "",
   "license": "ISC",
