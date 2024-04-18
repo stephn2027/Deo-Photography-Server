@@ -8,10 +8,9 @@ const axios = require("axios");
 const app = express();
 
 app.use(json());
-app.use(cors());
 
 app.use(cors({
-    origin: 'https://deo-palculan-photography.vercel.app/' // Replace with your Vercel app URL
+    origin: 'https://deo-palculan-photography.vercel.app/' 
   }));
 
 const {parsed: config } = dotenv.config();
