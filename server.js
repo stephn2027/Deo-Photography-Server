@@ -10,6 +10,10 @@ const app = express();
 app.use(json());
 app.use(cors());
 
+app.use(cors({
+    origin: 'https://deo-palculan-photography.vercel.app/' // Replace with your Vercel app URL
+  }));
+
 const {parsed: config } = dotenv.config();
 
 const CLOUD_NAME = config.CLOUD_NAME;
@@ -64,7 +68,7 @@ app.get('/portraits',async (req,res)=>{
     });
    return res.send(response.data);
 });
+const hostname = "0.0.0.0";
+const PORT = process.env.PORT || 7001;
 
-const PORT = process.env.PORT;
-
-app.listen(PORT,console.log(`Server running on ${PORT}`));
+app.listen(PORT,hostname,console.log(`Server running on ${PORT}`));
