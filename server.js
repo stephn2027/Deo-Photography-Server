@@ -10,7 +10,7 @@ const app = express();
 app.use(json());
 
 app.use(cors({
-    origin: 'https://deo-palculan-photography.vercel.app' 
+    origin: 'https://deopalculanphotography.com' 
   }));
 
 
