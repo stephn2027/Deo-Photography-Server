@@ -15,7 +15,7 @@ dotenv.config();
 var app = express();
 app.use(json());
 app.use(cors({
-  origin: 'https://deopalculanphotography.com'
+  origin: 'https://www.deopalculanphotography.com'
 }));
 var CLOUD_NAME = process.env.CLOUD_NAME;
 var BASE_URL_GROUP = "https://api.cloudinary.com/v1_1/".concat(CLOUD_NAME, "/resources/search?expression=folder:group&max_results=10&next_cursor");

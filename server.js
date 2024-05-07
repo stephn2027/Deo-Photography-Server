@@ -10,7 +10,7 @@ const app = express();
 app.use(json());
 
 app.use(cors({
-    origin: 'https://deopalculanphotography.com' 
+    origin: 'https://www.deopalculanphotography.com' 
   }));
 
 
