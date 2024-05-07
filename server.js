@@ -3,19 +3,19 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const {json} =require('body-parser');
 const axios = require("axios");
-
+dotenv.config();
 
 const app = express();
 
 app.use(json());
 
 app.use(cors({
-    origin: 'https://deo-palculan-photography.vercel.app/' 
+    origin: 'https://deo-palculan-photography.vercel.app' 
   }));
 
-const {parsed: config } = dotenv.config();
 
-const CLOUD_NAME = config.CLOUD_NAME;
+
+const CLOUD_NAME = process.env.CLOUD_NAME; 
 
 const BASE_URL_GROUP = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/resources/search?expression=folder:group&max_results=10&next_cursor`;
 const BASE_URL_ETC = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/resources/search?expression=folder:etc&max_results=10&next_cursor`;
@@ -24,8 +24,8 @@ const BASE_URL_COUPLES = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/resource
 
 const BASE_URL_PORTRAITS = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/resources/search?expression=folder:portraits&max_results=10&next_cursor`;
 const auth = {
-    username:config.API_KEY,
-    password:config.API_SECRET,
+    username:process.env.API_KEY,
+    password:process.env.API_SECRET,
 }
 
 app.get('/group',async (req,res)=>{
